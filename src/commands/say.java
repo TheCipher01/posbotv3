@@ -23,6 +23,7 @@ public class say extends ListenerAdapter{
         
         if(member.hasPermission(Permission.ADMINISTRATOR)){
             if(args[0].equalsIgnoreCase(main.prefix + "say")){
+                event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(event.getMessage().getContentRaw().substring(5)).queue();
                 event.getMessage().delete().queue();
             }
