@@ -8,8 +8,6 @@ package posv3;
 import commands.Info;
 import commands.AmongUs;
 import commands.kai;
-import commands.kick;
-import commands.ban;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
 import net.dv8tion.jda.api.JDA;
@@ -32,8 +30,6 @@ public class main {
                 .addEventListeners(new AmongUs())
                 .addEventListeners(new corrections())
                 .addEventListeners(new kai())
-                .addEventListeners(new kick())
-                .addEventListeners(new ban())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
