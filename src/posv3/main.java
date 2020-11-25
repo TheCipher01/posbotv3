@@ -34,7 +34,8 @@ public class main {
                 .addEventListeners(new kai())
                 .addEventListeners(new kick())
                 .addEventListeners(new ban())
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .setStatus(OnlineStatus.ONLINE)
+                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     

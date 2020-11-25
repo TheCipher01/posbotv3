@@ -31,7 +31,7 @@ public class kick extends ListenerAdapter{
             }
             List<Member> mentionedMembers = event.getMessage().getMentionedMembers();
             if(mentionedMembers.isEmpty()){
-                channel.sendMessage(name + " You must mention who you want to ban!");
+                channel.sendMessage(name + " You must mention who you want to ban!").queue();
             }else{
                 event.getGuild()
                         .kick(member)
