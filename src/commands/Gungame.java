@@ -44,6 +44,7 @@ public class Gungame extends ListenerAdapter{
             gunGame.setFooter("PoS Bot Created by Cipher");
             
             channel.sendMessage(gunGame.build()).queue();
+            event.getMessage().delete().queue();
                     
         }
     }
