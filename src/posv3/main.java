@@ -34,8 +34,8 @@ public class main {
                 .addEventListeners(new kai())
                 .addEventListeners(new say())
                 .addEventListeners(new Gungame())
-                //.setStatus(OnlineStatus.ONLINE)
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .setStatus(OnlineStatus.ONLINE)
+                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
