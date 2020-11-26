@@ -25,7 +25,7 @@ public class main {
     public static String prefix = "--";
     
     public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("NjA1NTQ3NjMwOTYwODM2NjY4.XT-GLQ.JgKyDSKbmH4XHj29E4wv2nBWt40")
+        JDA jda = JDABuilder.createDefault("")
                 .setActivity(Activity.playing("Jesse is not a bully!"))
                 //.setActivity(Activity.playing("Jesse is not a bully!"))
                 .addEventListeners(new Info())
