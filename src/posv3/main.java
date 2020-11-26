@@ -7,6 +7,7 @@ package posv3;
 
 import commands.Info;
 import commands.AmongUs;
+import commands.Gungame;
 import commands.kai;
 import commands.say;
 import javax.security.auth.login.LoginException;
@@ -32,6 +33,7 @@ public class main {
                 .addEventListeners(new corrections())
                 .addEventListeners(new kai())
                 .addEventListeners(new say())
+                .addEventListeners(new Gungame())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
