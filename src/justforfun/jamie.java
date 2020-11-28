@@ -28,27 +28,23 @@ public class jamie extends ListenerAdapter{
         if(args[0].equalsIgnoreCase(main.prefix + "jamie")){
             if(!member.hasPermission(Permission.ADMINISTRATOR)){
                 event.getChannel().sendMessage("You cannot use this command!").queue();
-                if(args.length <= 1){
-                   event.getChannel().sendMessage("Tag jamie you dingus").queue();
-                   event.getMessage().delete().queue();
-                }
             }else{
-                Role jamie = event.getGuild().getRoleById("727753015418814606");
-                Member target = event.getMessage().getMentionedMembers().get(0);
-                
-                if(target.getRoles().contains(jamie)){
-                    event.getGuild().removeRoleFromMember(target, jamie).queue();
-                    event.getChannel().sendMessage("Jamie has been ungrounded...you're going to regret that").queue();
-                    event.getMessage().delete().queue();
+                if(args.length <=1){
+                    event.getChannel().sendMessage("Tag Jamie you dingus").queue();
                 }else{
-                    event.getGuild().addRoleToMember(target, jamie).queue();
-                    event.getChannel().sendMessage("Jamie has been grounded...probably for posting cursed shit").queue();
-                    event.getMessage().delete().queue();
+                    Role jamie = event.getGuild().getRoleById("727753015418814606");
+                    Member target = event.getMessage().getMentionedMembers().get(0);
+                    
+                    if(target.getRoles().contains(jamie)){
+                        event.getGuild().removeRoleFromMember(target, jamie).queue();
+                        event.getChannel().sendMessage("Jamie has been ungrounded. . . you're going to regret that").queue();
+                        event.getMessage().delete().queue();
+                    }else{
+                        event.getGuild().addRoleToMember(target, jamie).queue();
+                        event.getChannel().sendMessage("Jamie has been grounded probably for sending cursed shit. Dammit Jamiee!").queue();
+                        event.getMessage().delete().queue();
+                    }
                 }
-//                
-//                event.getGuild().addRoleToMember(target, jamie).queue();
-//                event.getChannel().sendMessage("Jamie has been grounded..probably for posting cursed shit").queue();
-//                event.getMessage().delete().queue();
             }
         }
     }

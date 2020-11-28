@@ -6,6 +6,8 @@
 package commands;
 
 import java.util.List;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageHistory;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -20,14 +22,24 @@ import posv3.main;
 public class clear extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");    
-        
+        Member member = event.getMember();
         if(args[0].equalsIgnoreCase(main.prefix + "clear")){
-            if(args.length <= 2){
-                event.getChannel().sendMessage("Improper Usage! --clear {channel} {# of messages}").queue();
+            if(!member.hasPermission(Permission.MESSAGE_MANAGE)){
+                event.getChannel().sendMessage("You cannot do this!").queue();
             }else{
-                TextChannel target = event.getChannel();
-                purgeMessage(target, Integer.parseInt(args[2]));
+                if(args.length <=2){
+                    event.getChannel().sendMessage("Improper Usage! --clear {channel} {# of messages}").queue();
+                }else{
+                    TextChannel target = event.getChannel();
+                    purgeMessage(target, Integer.parseInt(args[2]));
+                }
             }
+//            if(args.length <= 2){
+//                event.getChannel().sendMessage("Improper Usage! --clear {channel} {# of messages}").queue();
+//            }else{
+//                TextChannel target = event.getChannel();
+//                purgeMessage(target, Integer.parseInt(args[2]));
+//            }
         }
     }
     
