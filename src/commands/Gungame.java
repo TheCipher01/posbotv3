@@ -40,6 +40,9 @@ public class Gungame extends ListenerAdapter{
             gunGame.addField("8033-9552-5694", "Overgrown - Gun Fight | Team Fight | Even number of people is best", true);
             gunGame.addField("0315-6756-3460", "Ice Dragons Lair - Gun Fight | FFA Gun Fight best of 5", true);
             gunGame.addField("1665-4835-6529", "Among Us - Gun Game | First to 25 kills", true);
+            gunGame.addField("1489-5879-1021", "Trip Chambers - Gun Game | 2-16 Players | First to 25 kills", true);
+            gunGame.addField("2820-0465-2363", "The Abyss - Gun Game | 2-16 Players", true);
+            gunGame.addField("6064-4771-8051", "Spooky Saloon", true);
             gunGame.setColor(0xfcac32);
             gunGame.setFooter("PoS Bot Created by Cipher");
             
