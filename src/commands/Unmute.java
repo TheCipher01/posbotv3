@@ -35,6 +35,8 @@ public class Unmute extends ListenerAdapter{
                    event.getMessage().delete().queue();
                    log(target, event.getMember(), event.getGuild().getTextChannelsByName("staff-log", true).get(0));
                }
+           }else{
+               event.getChannel().sendMessage("You cannot use this command!").queue();
            } 
         }
     }

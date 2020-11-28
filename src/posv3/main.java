@@ -15,6 +15,7 @@ import commands.kai;
 import commands.say;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
+import justforfun.jamie;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -40,8 +41,9 @@ public class main {
                 .addEventListeners(new clear())
                 .addEventListeners(new Mute())
                 .addEventListeners(new Unmute())
-                //.setStatus(OnlineStatus.ONLINE)
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .addEventListeners(new jamie())
+                .setStatus(OnlineStatus.ONLINE)
+                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
