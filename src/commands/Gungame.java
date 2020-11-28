@@ -43,6 +43,9 @@ public class Gungame extends ListenerAdapter{
             gunGame.addField("1489-5879-1021", "Trip Chambers - Gun Game | 2-16 Players | First to 25 kills", true);
             gunGame.addField("2820-0465-2363", "The Abyss - Gun Game | 2-16 Players", true);
             gunGame.addField("6064-4771-8051", "Spooky Saloon", true);
+            gunGame.addField("3428-2420-5841", "Honeycomb Hiehgts - Gun Game | 15 kills to win", true);
+            gunGame.addField("1613-3549-1319", "Farmageddon - Gun Game | 2 rounds close combat then FFA", true);
+            gunGame.addField("9359-4355-1184", "Among Us Mira HQ - Gun Game | 2-18 players", true);
             gunGame.setColor(0xfcac32);
             gunGame.setFooter("PoS Bot Created by Cipher");
             
