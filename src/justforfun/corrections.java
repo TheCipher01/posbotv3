@@ -20,6 +20,7 @@ public class corrections extends ListenerAdapter{
     public void onMessageReceived(MessageReceivedEvent event)
     {
         MessageChannel channel = event.getChannel();
+        @SuppressWarnings("null")
         String name = event.getMember().getAsMention();
         if (event.getAuthor().isBot()) return;
         // We don't want to respond to other bot accounts, including ourself
