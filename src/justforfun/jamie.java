@@ -32,6 +32,9 @@ public class jamie extends ListenerAdapter{
                    event.getChannel().sendMessage("Tag jamie you dingus").queue();
                    event.getMessage().delete().queue();
                 }
+            if(args.length <=1){
+                   event.getChannel().sendMessage("Tag jamie you dingus").queue();
+                   event.getMessage().delete().queue();                
             }else{
                 Role jamie = event.getGuild().getRoleById("727753015418814606");
                 Member target = event.getMessage().getMentionedMembers().get(0);
@@ -51,5 +54,6 @@ public class jamie extends ListenerAdapter{
 //                event.getMessage().delete().queue();
             }
         }
+     }
     }
 }
