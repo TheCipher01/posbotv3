@@ -29,22 +29,28 @@ public class Mute extends ListenerAdapter{
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         Member member = event.getMember();
         if(args[0].equalsIgnoreCase(main.prefix + "mute")){
-            if(args.length <=1){
-                sendErrorMessage(event.getChannel(), event.getMember());
+            if(!member.hasPermission(Permission.KICK_MEMBERS)){
+                event.getChannel().sendMessage("You cannot use this command!").queue();
             }else{
-                Role muted = event.getGuild().getRolesByName("Muted", true).get(0);
-                Member target = event.getMessage().getMentionedMembers().get(0);
-                
-                event.getGuild().addRoleToMember(target, muted).queue();
-               
-                if(args.length >=3){
-                    String reason = "";
-                    for(int i = 2; i < args.length; i++){
-                        reason += args[2] + " ";
-                    }
-                    log(target, event.getMember(), reason, event.getGuild().getTextChannelById("760722277595349012"));
+                if(args.length <= 1){
+                    sendErrorMessage(event.getChannel(), event.getMember());
                 }else{
-                    log(target, event.getMember(), "No reason specified", event.getGuild().getTextChannelById("760722277595349012"));
+                    Role muted = event.getGuild().getRolesByName("Muted", true).get(0);
+                    Member target = event.getMessage().getMentionedMembers().get(0);
+                    
+                    event.getGuild().addRoleToMember(target, muted);
+                    event.getChannel().sendMessage(target.getAsMention() + " has been muted!").queue();
+                    event.getMessage().delete().queue();
+                    
+                    if(args.length >=3){
+                        String reason = "";
+                        for(int i = 2; i < args.length; i++){
+                            reason += args[2] + " ";
+                        }
+                        log(target, event.getMember(), reason, event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                    }else{
+                        log(target, event.getMember(), "No reason specified", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                    }
                 }
             }
         }
