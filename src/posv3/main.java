@@ -7,11 +7,13 @@ package posv3;
 
 import commands.Info;
 import commands.AmongUs;
+import commands.Ban;
 import commands.Gungame;
 import commands.Mute;
 import commands.Unmute;
 import commands.clear;
 import commands.kai;
+import commands.kick;
 import commands.say;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
@@ -42,6 +44,8 @@ public class main {
                 .addEventListeners(new Mute())
                 .addEventListeners(new Unmute())
                 .addEventListeners(new jamie())
+                .addEventListeners(new Ban())
+                .addEventListeners(new kick())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
