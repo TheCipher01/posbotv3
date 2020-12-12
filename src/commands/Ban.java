@@ -32,17 +32,21 @@ public class Ban extends ListenerAdapter{
             }else{
                 if(args.length <=1){
                     sendErrorMessage(event.getChannel(), event.getMember());
+                    event.getMessage().delete().queue();
                 }else{
                     Member target = event.getMessage().getMentionedMembers().get(0);
+                    String tMember = target.getAsMention();
+                    String staff = member.getAsMention();
                     event.getGuild().ban(target, 0).queue();
                     event.getMessage().delete().queue();
                     
                     if(args.length >= 3){
                         String reason = "";
                         for(int i = 2; i < args.length; i++){
-                            reason = args[2] + " ";
+                            reason += args[i] + " ";
                         }
                         log(target, event.getMember(), reason, event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                        event.getChannel().sendMessage(tMember + " was just banned by " +  staff + " for: " + reason).queue();
                     }else{
                         log(target, event.getMember(), "No reason provided", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
                     }
