@@ -33,14 +33,16 @@ public class kick extends ListenerAdapter{
             }else{
                 if(args.length <= 1){
                     sendErrorMessage(event.getChannel(), event.getMember());
+                    event.getMessage().delete().queue();
                 }else{
                     if(args.length >=3){
-                        String reason ="";
+                        String reason =" ";
                         for(int i = 2; i <args.length; i++){
-                            reason += args[2] + " ";
+                            reason += args[i] + " ";
                         }
                         Member target = event.getMessage().getMentionedMembers().get(0);
                         event.getGuild().kick(target).queue();
+                        event.getMessage().delete().queue();
                         log(target, event.getMember(), reason, event.getGuild().getTextChannelsByName("staff-log", true).get(0));
                     }
                 }

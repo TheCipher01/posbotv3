@@ -32,6 +32,7 @@ public class Ban extends ListenerAdapter{
             }else{
                 if(args.length <=1){
                     sendErrorMessage(event.getChannel(), event.getMember());
+                    event.getMessage().delete().queue();
                 }else{
                     Member target = event.getMessage().getMentionedMembers().get(0);
                     event.getGuild().ban(target, 0).queue();
