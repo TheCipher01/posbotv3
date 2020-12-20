@@ -25,7 +25,7 @@ public class Gungame extends ListenerAdapter{
             gunGame.setTitle("Gun Game Maps");
             gunGame.setDescription("All the gun game maps that we have enjoyed and played");
             gunGame.addField("5719-7469-6732", "The Underworld - Gun Game | 2-16 players | First to 30 wins", true);
-            gunGame.addField("4846-7779-3845", "Illusion Hotel | The Spooky Gun Game", true);
+            gunGame.addField("4849-7779-3845", "Illusion Hotel | The Spooky Gun Game", true);
             gunGame.addField("7786-8539-6085", "Paradox | 2-16 players", true);
             gunGame.addField("6455-8418-0427", "Skull Canyon - Gun Game | 20 weapons | Siphon", true);
             gunGame.addField("9631-0136-2100", "Cyberpunk - Gun Game | 2-8 players", true);
@@ -46,6 +46,12 @@ public class Gungame extends ListenerAdapter{
             gunGame.addField("3428-2420-5841", "Honeycomb Hiehgts - Gun Game | 15 kills to win", true);
             gunGame.addField("1613-3549-1319", "Farmageddon - Gun Game | 2 rounds close combat then FFA", true);
             gunGame.addField("9359-4355-1184", "Among Us Mira HQ - Gun Game | 2-18 players", true);
+            gunGame.addField("9521-9857-0725", "Cyber City | First to 30 kills", true);
+            gunGame.addField("2238-4610-2493", "Modern Mansion | First to 20 kills", true);
+            gunGame.addField("2223-2300-6060", "Jokers Gun Game | First to **50** kills", true);
+            gunGame.addField("0522-2225-0329", "Rooftop Gun Game | First to 25 Kills", true);
+            gunGame.addField("4199-8785-5901", "Nuketown 2077 | Multiple Gamemode - Gun Game, Gun Swap, Bounty, Last Man Standing, FFA", true);
+            gunGame.addField("1337-8980-5503", "The Mandalorian | Two 6 minute rounds different guns each round!", true);
             gunGame.setColor(0xfcac32);
             gunGame.setFooter("PoS Bot Created by Cipher");
             
