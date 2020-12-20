@@ -10,6 +10,7 @@ import commands.AmongUs;
 import commands.Ban;
 import commands.Gungame;
 import commands.Mute;
+import commands.Serverinfo;
 import commands.Unmute;
 import commands.Userinfo;
 import commands.clear;
@@ -32,7 +33,7 @@ public class main {
     public static String prefix = "--";
     
     public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("")
+        JDA jda = JDABuilder.createDefault("NjA1NTQ3NjMwOTYwODM2NjY4.XT-GLQ.B29ItGvw7JVm7IvU1VuWiBgMtrY")
                 .setActivity(Activity.playing("Jesse is not a bully!"))
                 //.setActivity(Activity.playing("Jesse is not a bully!"))
                 .addEventListeners(new Info())
@@ -48,8 +49,9 @@ public class main {
                 .addEventListeners(new Ban())
                 .addEventListeners(new kick())
                 .addEventListeners(new Userinfo())
-                .setStatus(OnlineStatus.ONLINE)
-                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .addEventListeners(new Serverinfo())
+                //.setStatus(OnlineStatus.ONLINE)
+                .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
