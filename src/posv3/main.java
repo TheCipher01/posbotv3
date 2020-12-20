@@ -11,6 +11,7 @@ import commands.Ban;
 import commands.Gungame;
 import commands.Mute;
 import commands.Unmute;
+import commands.Userinfo;
 import commands.clear;
 import commands.kai;
 import commands.kick;
@@ -46,6 +47,7 @@ public class main {
                 .addEventListeners(new jamie())
                 .addEventListeners(new Ban())
                 .addEventListeners(new kick())
+                .addEventListeners(new Userinfo())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
