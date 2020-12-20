@@ -10,6 +10,7 @@ import commands.AmongUs;
 import commands.Ban;
 import commands.Gungame;
 import commands.Mute;
+import commands.Serverinfo;
 import commands.Unmute;
 import commands.Userinfo;
 import commands.clear;
@@ -48,6 +49,7 @@ public class main {
                 .addEventListeners(new Ban())
                 .addEventListeners(new kick())
                 .addEventListeners(new Userinfo())
+                .addEventListeners(new Serverinfo())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
