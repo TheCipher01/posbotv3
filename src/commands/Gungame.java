@@ -49,13 +49,20 @@ public class Gungame extends ListenerAdapter{
             gunGame.addField("9521-9857-0725", "Cyber City | First to 30 kills", true);
             gunGame.addField("2238-4610-2493", "Modern Mansion | First to 20 kills", true);
             gunGame.addField("2223-2300-6060", "Jokers Gun Game | First to **50** kills", true);
-            gunGame.addField("0522-2225-0329", "Rooftop Gun Game | First to 25 Kills", true);
-            gunGame.addField("4199-8785-5901", "Nuketown 2077 | Multiple Gamemode - Gun Game, Gun Swap, Bounty, Last Man Standing, FFA", true);
-            gunGame.addField("1337-8980-5503", "The Mandalorian | Two 6 minute rounds different guns each round!", true);
             gunGame.setColor(0xfcac32);
-            gunGame.setFooter("PoS Bot Created by Cipher");
+            gunGame.setFooter("1/2 | PoS Bot Created by Cipher");
+            
+            EmbedBuilder gunGame2 = new EmbedBuilder();
+            gunGame2.setColor(0xfcac32);
+            gunGame2.setTitle("Gun Game Maps");
+            gunGame2.setDescription("All the gun game maps that we havee enjoyed and played");
+            gunGame2.addField("0522-2225-0329", "Rooftop Gun Game | First to 25 Kills", true);
+            gunGame2.addField("4199-8785-5901", "Nuketown 2077 | Multiple Gamemode - Gun Game, Gun Swap, Bounty, Last Man Standing, FFA", true);
+            gunGame2.addField("1337-8980-5503", "The Mandalorian | Two 6 minute rounds different guns each round!", true);
+            gunGame2.setFooter("2/2 | PoS Bot Created by Cipher");
             
             channel.sendMessage(gunGame.build()).queue();
+            channel.sendMessage(gunGame2.build()).queue();
             event.getMessage().delete().queue();
                     
         }
