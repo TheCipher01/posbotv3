@@ -25,10 +25,14 @@ public class AmongUs extends ListenerAdapter{
             String name = event.getMember().getAsMention();
             if(!member.getRoles().contains(role)){
                 event.getChannel().sendMessage("You have been added to the Among Us Role! " + name + ".").queue();
-                event.getGuild().addRoleToMember(member, role).complete();                
+                event.getGuild().addRoleToMember(member, role).complete();   
+                event.getMessage()
+                        .delete().queue();
             }else{
                 event.getChannel().sendMessage("You have been removed from the Among Us Role! " + name + ".").queue();
                 event.getGuild().removeRoleFromMember(member, role).complete();                    
+                event.getMessage()
+                        .delete().queue();
             }
             
         }
