@@ -13,6 +13,7 @@ import commands.Mute;
 import commands.Serverinfo;
 import commands.Unmute;
 import commands.Userinfo;
+import commands.VcDc;
 import commands.clear;
 import commands.kai;
 import commands.kick;
@@ -50,6 +51,7 @@ public class main {
                 .addEventListeners(new kick())
                 .addEventListeners(new Userinfo())
                 .addEventListeners(new Serverinfo())
+                .addEventListeners(new VcDc())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
