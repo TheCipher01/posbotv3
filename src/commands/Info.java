@@ -34,11 +34,12 @@ public class Info extends ListenerAdapter
             MessageChannel channel = event.getChannel();
             EmbedBuilder info = new EmbedBuilder();
             info.setTitle("PoS Bot v3");
-            info.setDescription("PoS Bot v3 written in Java");
+            info.setDescription("PoS Bot v3");
+            info.addField("Prefix: ", "--", false);
+            info.addField("Useful commands: ", "--help", false);
             info.setColor(0xf45642);
             info.setFooter("Created by Cipher!");
             channel.sendMessage(info.build()).queue();
-            channel.sendMessage("I live!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
         }
     }
 }

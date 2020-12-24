@@ -18,6 +18,7 @@ import commands.clear;
 import commands.kai;
 import commands.kick;
 import commands.say;
+import help.MainHelp;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
 import justforfun.jamie;
@@ -52,6 +53,7 @@ public class main {
                 .addEventListeners(new Userinfo())
                 .addEventListeners(new Serverinfo())
                 .addEventListeners(new VcDc())
+                .addEventListeners(new MainHelp())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
