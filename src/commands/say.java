@@ -21,11 +21,13 @@ public class say extends ListenerAdapter{
         
         Member member = event.getMember();
         
-        if(member.hasPermission(Permission.ADMINISTRATOR)){
-            if(args[0].equalsIgnoreCase(main.prefix + "say")){
+        if(args[0].equalsIgnoreCase(main.prefix + "say")){
+            if(member.hasPermission(Permission.ADMINISTRATOR)){
                 event.getChannel().sendTyping().queue();
                 event.getChannel().sendMessage(event.getMessage().getContentRaw().substring(5)).queue();
                 event.getMessage().delete().queue();
+            }else{
+                event.getChannel().sendMessage("You cannot make me speak!").queue();
             }
         }
     }
