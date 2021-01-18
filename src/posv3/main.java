@@ -26,6 +26,8 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import tickets.CloseTicket;
+import tickets.ticket;
 
 /**
  *
@@ -37,7 +39,7 @@ public class main {
     public static void main(String[] args) throws LoginException {
         JDA jda = JDABuilder.createDefault("")
                 .setActivity(Activity.playing("Jesse is not a bully!"))
-                //.setActivity(Activity.playing("Jesse is not a bully!"))
+                //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
                 .addEventListeners(new AmongUs())
                 .addEventListeners(new corrections())
@@ -54,6 +56,8 @@ public class main {
                 .addEventListeners(new Serverinfo())
                 .addEventListeners(new VcDc())
                 .addEventListeners(new MainHelp())
+                .addEventListeners(new ticket())
+                .addEventListeners(new CloseTicket())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
