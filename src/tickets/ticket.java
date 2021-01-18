@@ -5,10 +5,12 @@
  */
 package tickets;
 
+import java.util.EnumSet;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Category;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -33,12 +35,18 @@ public class ticket extends ListenerAdapter{
                     channelName += args[i] + " ";
                 }
                 Member member = event.getMember();
-                long userId = member.getIdLong();
-                long allow = Permission.MESSAGE_READ.getRawValue() & Permission.MESSAGE_WRITE.getRawValue();
+                Role role = event.getGuild().getPublicRole();
+                EnumSet<Permission> allow = EnumSet.of(Permission.MESSAGE_READ);
+                EnumSet<Permission> allowW = EnumSet.of(Permission.MESSAGE_WRITE);
                 long deny = Permission.MESSAGE_MENTION_EVERYONE.getRawValue();
                 ChannelAction<Category> category = event.getGuild().createCategory("ticket" + channelName);
-                ChannelAction ticket = event.getGuild().createTextChannel(channelName);
-                ticket.setParent(ctgr)
+                TextChannel ticket = event.getGuild().createTextChannel("ticket " + channelName)
+                        //.addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL), null)
+                        //.addPermissionOverride(event.getMember(), EnumSet.of(Permission.MESSAGE_WRITE), null)
+                        .addPermissionOverride(role, null, EnumSet.of(Permission.VIEW_CHANNEL))
+                        .addPermissionOverride(event.getMember(), EnumSet.of(Permission.MESSAGE_WRITE, Permission.MESSAGE_READ, Permission.VIEW_CHANNEL, Permission.MANAGE_CHANNEL), null)
+                        .complete();
+                event.getChannel().sendMessage("Ticket created!").queue();
             }
         }
         
