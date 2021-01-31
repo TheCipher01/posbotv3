@@ -24,6 +24,7 @@ public class Info extends ListenerAdapter
     public void onMessageReceived(MessageReceivedEvent event)
     {
         if (event.getAuthor().isBot()) return;
+        if (main.Blacklist.contains(event.getAuthor().getId())) return;
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
         String content = message.getContentRaw(); 

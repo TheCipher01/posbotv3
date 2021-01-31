@@ -6,6 +6,7 @@
 package help;
 
 import java.awt.Color;
+import java.util.Arrays;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -17,8 +18,7 @@ import posv3.main;
  */
 public class MainHelp extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
-        String[] args = event.getMessage().getContentRaw().split("\\s+");
-        
+        String[] args = event.getMessage().getContentRaw().split("\\s+");        
         if(args[0].equalsIgnoreCase(main.prefix + "help")){
            EmbedBuilder help = new EmbedBuilder();
            help.setTitle("PoS Bot Help")
