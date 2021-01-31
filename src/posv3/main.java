@@ -8,6 +8,7 @@ package posv3;
 import commands.Info;
 import commands.AmongUs;
 import commands.Ban;
+import commands.BlacklistTest;
 import commands.Gungame;
 import commands.Mute;
 import commands.Serverinfo;
@@ -19,6 +20,8 @@ import commands.kai;
 import commands.kick;
 import commands.say;
 import help.MainHelp;
+import java.util.Arrays;
+import java.util.List;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
 import justforfun.jamie;
@@ -35,6 +38,7 @@ import tickets.ticket;
  */
 public class main {
     public static String prefix = "--";
+    public static final List<String> Blacklist = Arrays.asList();
     
     public static void main(String[] args) throws LoginException {
         JDA jda = JDABuilder.createDefault("")

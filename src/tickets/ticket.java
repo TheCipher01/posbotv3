@@ -38,7 +38,6 @@ public class ticket extends ListenerAdapter{
                 Role role = event.getGuild().getPublicRole();
                 EnumSet<Permission> allow = EnumSet.of(Permission.MESSAGE_READ);
                 EnumSet<Permission> allowW = EnumSet.of(Permission.MESSAGE_WRITE);
-                long deny = Permission.MESSAGE_MENTION_EVERYONE.getRawValue();
                 ChannelAction<Category> category = event.getGuild().createCategory("ticket" + channelName);
                 TextChannel ticket = event.getGuild().createTextChannel("ticket " + channelName)
                         //.addPermissionOverride(event.getMember(), EnumSet.of(Permission.VIEW_CHANNEL), null)
