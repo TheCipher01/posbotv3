@@ -16,6 +16,8 @@ import commands.Unmute;
 import commands.Userinfo;
 import commands.VcDc;
 import commands.clear;
+import commands.deafen;
+import commands.undeafen;
 import commands.kai;
 import commands.kick;
 import commands.say;
@@ -41,7 +43,7 @@ public class main {
     public static final List<String> Blacklist = Arrays.asList();
     
     public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("")
+        JDA jda = JDABuilder.createDefault("NjA1NTQ3NjMwOTYwODM2NjY4.XT-GLQ.0slPsKV02TRTJArjhM5wAmOvC-w")
                 .setActivity(Activity.playing("Jesse is not a bully!"))
                 //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
@@ -62,6 +64,8 @@ public class main {
                 .addEventListeners(new MainHelp())
                 .addEventListeners(new ticket())
                 .addEventListeners(new CloseTicket())
+                .addEventListeners(new deafen())
+                .addEventListeners(new undeafen())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
