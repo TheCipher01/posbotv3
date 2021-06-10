@@ -18,6 +18,7 @@ public class undeafen extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         Member member = event.getMember();    
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         
         if(args[0].equalsIgnoreCase(main.prefix + "undeaf")){
             if(args.length >1){

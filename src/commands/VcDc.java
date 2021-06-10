@@ -24,6 +24,7 @@ public class VcDc extends ListenerAdapter{
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         Member member = event.getMember();
         
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         if(args[0].equalsIgnoreCase(main.prefix + "dc")){
             if(!member.hasPermission(Permission.KICK_MEMBERS)){
                 event.getChannel().sendMessage("You do not have permission!").queue();

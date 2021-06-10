@@ -20,6 +20,7 @@ public class deafen extends ListenerAdapter{
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         Member member = event.getMember();    
         
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         if(args[0].equalsIgnoreCase(main.prefix + "deaf")){
             if(args.length >1){
                 event.getChannel().sendMessage("You put to many arguments!").queue();
