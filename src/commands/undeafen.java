@@ -5,7 +5,6 @@
  */
 package commands;
 
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -15,21 +14,22 @@ import posv3.main;
  *
  * @author User
  */
-public class say extends ListenerAdapter{
+public class undeafen extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
+        Member member = event.getMember();    
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         
-        Member member = event.getMember();
-        
-        if(args[0].equalsIgnoreCase(main.prefix + "say")){
-            if(member.hasPermission(Permission.ADMINISTRATOR)){
-                event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage(event.getMessage().getContentRaw().substring(5)).queue();
-                event.getMessage().delete().queue();
+        if(args[0].equalsIgnoreCase(main.prefix + "undeaf")){
+            if(args.length >1){
+                event.getChannel().sendMessage("You put to many arguments!").queue();
             }else{
-                event.getChannel().sendMessage("You cannot make me speak!").queue();
+                event.getGuild().deafen(member, false).queue();
+                event.getGuild().mute(member, false).queue();
+                event.getMessage().delete().queue();
             }
         }
-    }
-    
+    }   
 }
+    
+

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands;
+package tickets;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -15,19 +17,18 @@ import posv3.main;
  *
  * @author User
  */
-public class say extends ListenerAdapter{
+public class CloseTicket extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
-        
+        if(event.getAuthor().isBot()) return;
         Member member = event.getMember();
         
-        if(args[0].equalsIgnoreCase(main.prefix + "say")){
-            if(member.hasPermission(Permission.ADMINISTRATOR)){
-                event.getChannel().sendTyping().queue();
-                event.getChannel().sendMessage(event.getMessage().getContentRaw().substring(5)).queue();
-                event.getMessage().delete().queue();
+        if(args[0].equalsIgnoreCase(main.prefix + "closeticket")){
+            if(!member.hasPermission(event.getChannel(), Permission.MANAGE_CHANNEL, null)){
+                event.getChannel().sendMessage("You can't use this command!").queue();
             }else{
-                event.getChannel().sendMessage("You cannot make me speak!").queue();
+                event.getChannel().sendMessage("Closing Ticket!").queue();
+                event.getChannel().delete().queue();
             }
         }
     }

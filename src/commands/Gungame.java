@@ -18,6 +18,7 @@ import posv3.main;
 public class Gungame extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         
         if(args[0].equalsIgnoreCase(main.prefix + "gungame")){
             MessageChannel channel = event.getChannel();

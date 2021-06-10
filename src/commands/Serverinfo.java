@@ -21,6 +21,7 @@ public class Serverinfo extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         if(args[0].equalsIgnoreCase(main.prefix + "server")){
             Guild server = event.getGuild();
             int members = server.getMemberCount();

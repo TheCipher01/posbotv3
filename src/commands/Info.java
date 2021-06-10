@@ -24,21 +24,21 @@ public class Info extends ListenerAdapter
     public void onMessageReceived(MessageReceivedEvent event)
     {
         if (event.getAuthor().isBot()) return;
+        if (main.Blacklist.contains(event.getAuthor().getId())) return;
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
         String content = message.getContentRaw(); 
-        // getContentRaw() is an atomic getter
-        // getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
         if (content.equals(main.prefix + "info"))
         {
             MessageChannel channel = event.getChannel();
             EmbedBuilder info = new EmbedBuilder();
             info.setTitle("PoS Bot v3");
-            info.setDescription("PoS Bot v3 written in Java");
+            info.setDescription("PoS Bot v3");
+            info.addField("Prefix: ", "--", false);
+            info.addField("Useful commands: ", "--help", false);
             info.setColor(0xf45642);
             info.setFooter("Created by Cipher!");
             channel.sendMessage(info.build()).queue();
-            channel.sendMessage("I live!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
         }
     }
 }

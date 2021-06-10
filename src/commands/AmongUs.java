@@ -19,6 +19,7 @@ public class AmongUs extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         if(args[0].equalsIgnoreCase(main.prefix + "au")){
             Member member = event.getMember();
             Role role = event.getGuild().getRoleById("754496624700686346");
