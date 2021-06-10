@@ -28,8 +28,6 @@ public class Info extends ListenerAdapter
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
         String content = message.getContentRaw(); 
-        // getContentRaw() is an atomic getter
-        // getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
         if (content.equals(main.prefix + "info"))
         {
             MessageChannel channel = event.getChannel();

@@ -23,6 +23,7 @@ public class Userinfo extends ListenerAdapter{
     public void onGuildMessageReceived(GuildMessageReceivedEvent event){
         String[] args = event.getMessage().getContentRaw().split("\\s+");
         
+        if(main.Blacklist.contains(event.getAuthor().getId())) return;
         if(args[0].equalsIgnoreCase(main.prefix + "userinfo")){
             if(args.length < 1){
                 event.getChannel().sendMessage("Please provide a name!").queue();

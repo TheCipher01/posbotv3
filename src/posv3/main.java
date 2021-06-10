@@ -5,23 +5,14 @@
  */
 package posv3;
 
-import commands.Info;
-import commands.AmongUs;
-import commands.Ban;
-import commands.BlacklistTest;
-import commands.Gungame;
-import commands.Mute;
-import commands.Serverinfo;
-import commands.Unmute;
-import commands.Userinfo;
-import commands.VcDc;
-import commands.clear;
-import commands.kai;
-import commands.kick;
-import commands.say;
+import commands.*;
 import help.MainHelp;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
 import justforfun.jamie;
@@ -29,6 +20,7 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import tickets.CloseTicket;
 import tickets.ticket;
 
@@ -38,10 +30,21 @@ import tickets.ticket;
  */
 public class main {
     public static String prefix = "--";
-    public static final List<String> Blacklist = Arrays.asList();
+    public static final List<String> oldBlacklist = Arrays.asList();
+    public static final ArrayList<String> Blacklist = new ArrayList<String>();
     
-    public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("")
+    
+    public static void main(String[] args) throws LoginException, FileNotFoundException{
+        
+        Scanner in = new Scanner(new File("blacklist.txt"));
+        while(in.hasNextLine()){
+            String blacklist = in.nextLine();
+            Blacklist.add(blacklist);
+        }
+        System.out.println(Blacklist);
+        in.close();
+        
+        JDA jda = JDABuilder.createDefault("", GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
                 .setActivity(Activity.playing("Jesse is not a bully!"))
                 //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
@@ -62,6 +65,9 @@ public class main {
                 .addEventListeners(new MainHelp())
                 .addEventListeners(new ticket())
                 .addEventListeners(new CloseTicket())
+                .addEventListeners(new deafen())
+                .addEventListeners(new undeafen())
+                .addEventListeners(new blacklist())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
