@@ -21,7 +21,7 @@ public class ping extends ListenerAdapter{
         if(args[0].equalsIgnoreCase(main.prefix + "ping")){
             long before = System.currentTimeMillis();
             event.getChannel().sendMessage("Pinging. . .").queue(message -> {
-                message.editMessage("Gateway ping: `" + event.getJDA().getGatewayPing() + "`ms\nPing: `" +  (System.currentTimeMillis()-before) + "' ms").queue();
+                message.editMessage("Gateway ping: `" + event.getJDA().getGatewayPing() + "`ms\nPing: `" +  (System.currentTimeMillis()-before) + "` ms`").queue();
             });
             event.getMessage().delete().queue();
         }

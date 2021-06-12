@@ -32,6 +32,7 @@ public class main {
     public static String prefix = "--";
     public static final List<String> oldBlacklist = Arrays.asList();
     public static final ArrayList<String> Blacklist = new ArrayList<String>();
+    public static String t = "";
     
     
     public static void main(String[] args) throws LoginException, FileNotFoundException{
@@ -44,7 +45,12 @@ public class main {
         System.out.println(Blacklist);
         in.close();
         
-        JDA jda = JDABuilder.createDefault("", GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
+        Scanner Tin = new Scanner(new File("info.txt"));
+        while(Tin.hasNextLine()){
+            t = Tin.nextLine();
+        }
+        
+        JDA jda = JDABuilder.createDefault(t, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
                 .setActivity(Activity.playing("Jesse is not a bully!"))
                 //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
@@ -68,6 +74,7 @@ public class main {
                 .addEventListeners(new deafen())
                 .addEventListeners(new undeafen())
                 .addEventListeners(new blacklist())
+                .addEventListeners(new ping())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
