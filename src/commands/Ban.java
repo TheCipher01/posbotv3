@@ -73,7 +73,7 @@ public class Ban extends ListenerAdapter{
                         event.getChannel().sendMessage("You cannot ban yourself!").queue();
                     }else{
 //                        String staff = event.getMember().getAsMention();
-                        event.getGuild().ban(args[1], 0).queue();
+                        //event.getGuild().ban(args[1], 0).queue();
                         User u = User.fromId(args[1]);
                         
                         
