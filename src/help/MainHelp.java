@@ -26,6 +26,7 @@ public class MainHelp extends ListenerAdapter{
                    .setColor(Color.decode("#4834d4"))
                    .addField("au", "Will add you to the Among Us role. If you already have the role you will be removed.", true)
                    .addField("ban", "Admin Only. Bans a user from the guild", true)
+                   .addField("banid", "Admin Only. Bans a user by their id from the guild", true)
                    .addField("gungame", "Display a list of fortnite gun game maps", true)
                    .addField("info", "Gives very basic information about the bot.", true)
                    .addField("Mute", "Staff only - Mutes a user", true)
