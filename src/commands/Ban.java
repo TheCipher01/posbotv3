@@ -10,9 +10,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import posv3.main;
@@ -49,6 +51,38 @@ public class Ban extends ListenerAdapter{
                         event.getChannel().sendMessage(tMember + " was just banned by " +  staff + " for: " + reason).queue();
                     }else{
                         log(target, event.getMember(), "No reason provided", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                    }
+                }
+            }
+        }
+        
+        if(args[0].equalsIgnoreCase(main.prefix + "banid")){
+            if(!member.hasPermission(Permission.BAN_MEMBERS)){
+                event.getChannel().sendMessage("You do not have permission to ban members!").queue();
+            }else{
+                if(args.length <=1){
+                    sendErrorMessage(event.getChannel(), event.getMember());
+                    event.getMessage().delete().queue();
+                }else{
+                    if(args[1].equalsIgnoreCase(event.getAuthor().getId())){
+                        event.getChannel().sendMessage("You cannot ban yourself!").queue();
+                    }else{
+                        String staff = event.getMember().getAsMention();
+                        event.getGuild().ban(args[1], 0).queue();
+                        Member target2 = (Member) event.getJDA().retrieveUserById(args[1]);
+                        String t2 = target2.getAsMention();
+                        
+                        if(args.length >=3){
+                            String reason = "";
+                            for(int i =2; i< args.length; i++){
+                                reason += args[i] + " ";
+                            }
+                            log(target2, event.getMember(), reason, event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                            event.getChannel().sendMessage(t2 + " was just banned by " +  staff + " for: " + reason).queue();
+                        }else{
+                            log(target2, event.getMember(), "No reason provided", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+                            event.getChannel().sendMessage(t2 + " was just banned by " +  staff + " for no reason provided").queue();
+                        }
                     }
                 }
             }
