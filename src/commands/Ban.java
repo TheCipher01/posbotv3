@@ -39,6 +39,10 @@ public class Ban extends ListenerAdapter{
                     Member target = event.getMessage().getMentionedMembers().get(0);
                     String tMember = target.getAsMention();
                     String staff = member.getAsMention();
+                    if(tMember.equals(staff)){
+                        event.getChannel().sendMessage("You cannot ban yourself sally!").queue();
+                        return;
+                    }
                     event.getGuild().ban(target, 0).queue();
                     event.getMessage().delete().queue();
                     
