@@ -28,8 +28,7 @@ public class buttonTest extends ListenerAdapter{
         
         if(args[0].equalsIgnoreCase(main.prefix + "au2")){
             event.getChannel().sendMessage("Click the buttons to either yourself the Among Us Role or to Remove it!")
-                    .setActionRow(Button.success("give", "Get the among us role!"))
-                    //.setActionRow(Button.danger("remove", "Remove the among us role!"))
+                    .setActionRow(Button.success("give", "Get the Among Us Role!"), Button.danger("remove", "Remove the Among Us Role!"))
                     .queue();
         }
     }
@@ -42,12 +41,12 @@ public class buttonTest extends ListenerAdapter{
                 event.getChannel().sendMessage("You have been added to the Among Us Role!").queue();
                 event.getGuild().addRoleToMember(member, role).complete();
             }
-//        }else if(event.getComponentId().equals("remove")){
-//            Member member = event.getMember();
-//            Role role = event.getGuild().getRoleById("760705745582293013");            
-//            event.getChannel().sendMessage("You have been removed from the Among Us Role!").queue();
-//            event.getGuild().removeRoleFromMember(member, role).complete();
-//        }
+        }else if(event.getComponentId().equals("remove")){
+            Member member = event.getMember();
+            Role role = event.getGuild().getRoleById("760705745582293013");            
+            event.getChannel().sendMessage("You have been removed from the Among Us Role!").queue();
+            event.getGuild().removeRoleFromMember(member, role).complete();
+        }
     }
     
 }
