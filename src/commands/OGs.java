@@ -42,7 +42,8 @@ public class OGs extends ListenerAdapter{
                     .queue();            
             event.getChannel().sendMessage("Click the buttons to get or remove the `DRG` role")
                     .setActionRow(Button.success("dJoin", "Join DRG"), Button.danger("dLeave", "Leave DRG"))
-                    .queue();            
+                    .queue();    
+            event.getMessage().delete().queue();
         }
     }
     
