@@ -5,6 +5,7 @@
  */
 package posv3;
 
+import deprecated.AmongUs;
 import commands.*;
 import help.MainHelp;
 import java.io.File;
@@ -51,8 +52,8 @@ public class main {
         }
         
         JDA jda = JDABuilder.createDefault(t, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
-                //.setActivity(Activity.playing("Jesse is not a bully!"))
-                .setActivity(Activity.playing("In Development"))
+                .setActivity(Activity.playing("Jesse is not a bully!"))
+                //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
                 .addEventListeners(new AmongUs())
                 .addEventListeners(new corrections())
@@ -75,8 +76,10 @@ public class main {
                 .addEventListeners(new undeafen())
                 .addEventListeners(new blacklist())
                 .addEventListeners(new ping())
-                //.setStatus(OnlineStatus.ONLINE)
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .addEventListeners(new Games())
+                .addEventListeners(new OGs())
+                .setStatus(OnlineStatus.ONLINE)
+                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
