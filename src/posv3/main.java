@@ -5,6 +5,7 @@
  */
 package posv3;
 
+import deprecated.AmongUs;
 import commands.*;
 import help.MainHelp;
 import java.io.File;

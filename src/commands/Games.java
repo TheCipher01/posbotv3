@@ -12,7 +12,6 @@ import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.Button;
 import posv3.main;
 
@@ -29,9 +28,10 @@ public class Games extends ListenerAdapter{
         if(args[0].equalsIgnoreCase(main.prefix + "games")){
             if(!event.getMember().hasPermission(Permission.ADMINISTRATOR)){
                 event.getChannel().sendMessage("You do not have permission to use this command!").queue();
+                return;
             }
-            event.getChannel().sendMessage("Click the buttons to either yourself the Among Us Role or to Remove it!")
-                    .setActionRow(Button.success("give", "Get the Among Us Role!"), Button.danger("remove", "Remove the Among Us Role!"))
+            event.getChannel().sendMessage("Click the buttons to get or remove the `Among Us` role")
+                    .setActionRow(Button.success("give", "Join Among Us"), Button.danger("remove", "Leave Among Us"))
                     .queue();
             event.getMessage().delete().queue();
             event.getChannel().sendMessage("Click the buttons to get or remove the `Overwatch` role!")
@@ -40,6 +40,7 @@ public class Games extends ListenerAdapter{
             event.getChannel().sendMessage("Click the buttons to get or remove the `Valorant` and/or `Dead By Daylight` roles!")
                     .setActionRow(Button.success("jVal", "Join Valorant"), Button.danger("lVal", "Leave Valorant"), Button.primary("jDBD", "Join Dead by Daylight"), Button.secondary("lDBD", "Leave Dead by Daylight"))
                     .queue();
+            event.getChannel().sendMessage("_Please ignore if the button says `This interaction failed` as long as you have the desired role, it worked_").queue();
         }
     }
     @Override
