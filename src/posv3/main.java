@@ -51,8 +51,8 @@ public class main {
         }
         
         JDA jda = JDABuilder.createDefault(t, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
-                //.setActivity(Activity.playing("Jesse is not a bully!"))
-                .setActivity(Activity.playing("In Development"))
+                .setActivity(Activity.playing("Buttons!"))
+                //.setActivity(Activity.playing("In Development"))
                 .addEventListeners(new Info())
                 .addEventListeners(new AmongUs())
                 .addEventListeners(new corrections())
@@ -75,6 +75,7 @@ public class main {
                 .addEventListeners(new undeafen())
                 .addEventListeners(new blacklist())
                 .addEventListeners(new ping())
+                .addEventListeners(new buttonTest())
                 //.setStatus(OnlineStatus.ONLINE)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
