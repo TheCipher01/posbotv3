@@ -36,6 +36,9 @@ public class buttonTest extends ListenerAdapter{
     @Override
     public void onButtonClick(ButtonClickEvent event){
         if(event.getComponentId().equals("give")){
+            if(main.Blacklist.contains(event.getMember().getId())){
+                return;
+            }            
             Member member = event.getMember();
             Role role = event.getGuild().getRoleById("760705745582293013");
             String name = member.getAsMention();
@@ -45,6 +48,9 @@ public class buttonTest extends ListenerAdapter{
                 //event.getMessage().delete().queue();
             }
         }else if(event.getComponentId().equals("remove")){
+            if(main.Blacklist.contains(event.getMember().getId())){
+                return;
+            }
             Member member = event.getMember();
             Role role = event.getGuild().getRoleById("760705745582293013");
             String name = member.getAsMention();
