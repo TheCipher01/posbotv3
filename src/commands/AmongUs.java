@@ -37,30 +37,6 @@ public class AmongUs extends ListenerAdapter{
             }
             
         }
-        
-//        if(args[0].equalsIgnoreCase(main.prefix + "au")){
-//            if(args.length > 1 && args.length < 3){
-//                Member member = event.getMember();
-//                Role role = event.getGuild().getRoleById("754496624700686346");
-//                
-//                if(!member.getRoles().contains(role)){
-//                    //mute user
-//                    event.getChannel().sendMessage("You have been added to the Among Us Role! " + args[1] + ".").queue();
-//                    event.getGuild().addRoleToMember(member, role).complete();
-//                    
-//                }else{
-//                    //unmute user
-//                    event.getChannel().sendMessage("You have been removed from the Among Us Role! " + args[1] + ".").queue();
-//                    event.getGuild().removeRoleFromMember(member, role).complete();                    
-//                    
-//                }
-//                
-//            }else if(args.length == 3){
-//                
-//            }else{
-//                event.getChannel().sendMessage("Incorrect synatx. Use `~mute [user mention] [time {optional}]").queue();
-//            }
-//        }
     }
     
 }
