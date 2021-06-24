@@ -75,7 +75,7 @@ public class main {
                 .addEventListeners(new undeafen())
                 .addEventListeners(new blacklist())
                 .addEventListeners(new ping())
-                .addEventListeners(new buttonTest())
+                .addEventListeners(new Games())
                 //.setStatus(OnlineStatus.ONLINE)
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
