@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.security.auth.login.LoginException;
 import justforfun.corrections;
 import justforfun.jamie;
@@ -24,6 +26,9 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import tickets.CloseTicket;
 import tickets.ticket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLDataException;
 
 /**
  *
@@ -50,6 +55,13 @@ public class main {
         while(Tin.hasNextLine()){
             t = Tin.nextLine();
         }
+        
+        try{
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+        }catch (Exception ex){
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         JDA jda = JDABuilder.createDefault(t, GatewayIntent.GUILD_MEMBERS, GatewayIntent.GUILD_MESSAGES)
                 .setActivity(Activity.playing("Jesse is not a bully!"))
@@ -78,6 +90,7 @@ public class main {
                 .addEventListeners(new ping())
                 .addEventListeners(new Games())
                 .addEventListeners(new OGs())
+                .addEventListeners(new Warn())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
