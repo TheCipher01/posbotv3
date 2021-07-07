@@ -43,7 +43,7 @@ public class OGs extends ListenerAdapter{
             event.getChannel().sendMessage("Click the buttons to get or remove the `DRG` role")
                     .setActionRow(Button.success("dJoin", "Join DRG"), Button.danger("dLeave", "Leave DRG"))
                     .queue();    
-            event.getChannel().sendMessage("Click the buttons to get or remove the `Overcooke` role")
+            event.getChannel().sendMessage("Click the buttons to get or remove the `Overcooked` role")
                     .setActionRow(Button.success("ocJoin", "Join Overcooked"), Button.danger("ocLeave", "Leave Overcooked"))
                     .queue();
             event.getMessage().delete().queue();
