@@ -43,6 +43,9 @@ public class OGs extends ListenerAdapter{
             event.getChannel().sendMessage("Click the buttons to get or remove the `DRG` role")
                     .setActionRow(Button.success("dJoin", "Join DRG"), Button.danger("dLeave", "Leave DRG"))
                     .queue();    
+            event.getChannel().sendMessage("Click the buttons to get or remove the `Overcooke` role")
+                    .setActionRow(Button.success("ocJoin", "Join Overcooked"), Button.danger("ocLeave", "Leave Overcooked"))
+                    .queue();
             event.getMessage().delete().queue();
         }
     }
@@ -129,7 +132,34 @@ public class OGs extends ListenerAdapter{
             String name = member.getAsMention();
             event.getChannel().sendMessage(name + ", you have been removed from the DRG role! You pointy eared leaf lover!").queue();
             event.getGuild().removeRoleFromMember(member, role).complete();
-        }        
+        }     
+        
+        //overcooked
+        if(event.getComponentId().equals("ocJoin")){
+            Member member = event.getMember();
+            Role role = event.getGuild().getRoleById("862230905979797575");
+            String name = member.getAsMention();
+            
+            if(!member.getRoles().contains(role)){
+                event.getChannel().sendMessage(name + ", you have been added to the Overcooked role!").queue();
+                event.getGuild().addRoleToMember(member, role).complete();
+            }else{
+                event.getChannel().sendMessage(name + ", you already have this role!").queue();
+            }
+        }
+        
+        if(event.getComponentId().equals("ocLeave")){
+            Member member = event.getMember();
+            Role role = event.getGuild().getRoleById("862230905979797575");
+            String name = member.getAsMention();
+            
+            if(member.getRoles().contains(role)){
+                event.getChannel().sendMessage(name + ", you have been removed from the Overcooked role!").queue();
+                event.getGuild().addRoleToMember(member, role).complete();
+            }else{
+                event.getChannel().sendMessage(name + ", you do not have this role!").queue();
+            }
+        }
     }
     
 }
