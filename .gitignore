@@ -1,3 +1,7 @@
 /dist/
 info.txt
 *.class
+*.class
+*.xml
+nbproject/genfiles.properties
+nbproject/private/private.properties
