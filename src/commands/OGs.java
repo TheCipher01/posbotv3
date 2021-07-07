@@ -155,7 +155,7 @@ public class OGs extends ListenerAdapter{
             
             if(member.getRoles().contains(role)){
                 event.getChannel().sendMessage(name + ", you have been removed from the Overcooked role!").queue();
-                event.getGuild().addRoleToMember(member, role).complete();
+                event.getGuild().removeRoleFromMember(member, role).complete();
             }else{
                 event.getChannel().sendMessage(name + ", you do not have this role!").queue();
             }
