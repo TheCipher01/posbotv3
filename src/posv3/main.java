@@ -80,8 +80,8 @@ public class main {
                 .addEventListeners(new OGs())
                 .addEventListeners(new randomGungame())
                 .addEventListeners(new rggAdd())
-                //.setStatus(OnlineStatus.ONLINE)
-                .setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .setStatus(OnlineStatus.ONLINE)
+                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
