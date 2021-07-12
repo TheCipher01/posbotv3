@@ -78,6 +78,8 @@ public class main {
                 .addEventListeners(new ping())
                 .addEventListeners(new Games())
                 .addEventListeners(new OGs())
+                .addEventListeners(new randomGungame())
+                .addEventListeners(new rggAdd())
                 .setStatus(OnlineStatus.ONLINE)
                 //.setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
