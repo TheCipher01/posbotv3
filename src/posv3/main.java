@@ -79,8 +79,9 @@ public class main {
                 .addEventListeners(new Games())
                 .addEventListeners(new OGs())
                 .addEventListeners(new randomGungame())
-                .setStatus(OnlineStatus.ONLINE)
-                //.setStatus(OnlineStatus.DO_NOT_DISTURB)
+                .addEventListeners(new rggAdd())
+                //.setStatus(OnlineStatus.ONLINE)
+                .setStatus(OnlineStatus.DO_NOT_DISTURB)
                 .build();
     }
     
