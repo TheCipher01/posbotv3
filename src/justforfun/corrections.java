@@ -21,33 +21,31 @@ public class corrections extends ListenerAdapter{
     {
         MessageChannel channel = event.getChannel();
         @SuppressWarnings("null")
-        String name = event.getMember().getAsMention();
-        if (event.getAuthor().isBot()) return;
+        String bs = "";
+        if(event.getAuthor().isBot()) return;
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
         String content = message.getContentRaw(); 
         
         if(content.toLowerCase().contains("traitor")){
-
+            String name = event.getMember().getAsMention();
             channel.sendMessage(name + " You mean Jamie? Fuck Jamie!").queue();
         }
         
         if(content.toLowerCase().contains("tonic")){
+            String name = event.getMember().getAsMention();
             channel.sendMessage(name + " It's toxic").queue();
         }
         
         if(content.toLowerCase().contains("hesse")){
+            String name = event.getMember().getAsMention();
             channel.sendMessage(name + " It's **Jesse**").queue();
         }
         
         if(content.toLowerCase().contains("simp")){
+            String name = event.getMember().getAsMention();
             channel.sendMessage(name + " Why are you talking about Brandon?").queue();
         }
-//        if(content.equals("traitor") || content.equals("traitor")){
-//            MessageChannel channel = event.getChannel();
-//            Member member = event.getMember();
-//            String name = event.getMember().getAsMention();
-//            channel.sendMessage(name + "You mean Jamie? Fuck Jamie!").queue();
-//        }
+        
     }
 }
