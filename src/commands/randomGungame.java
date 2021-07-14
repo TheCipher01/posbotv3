@@ -95,22 +95,22 @@ public class randomGungame extends ListenerAdapter{
             String choice = gg.get(index);
             
             event.getChannel().sendMessage("I picked: " + choice).queue();
-            log(event.getMember(), event.getChannel(), event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+            log(event.getMember(), event.getChannel(), "Generate Gungame", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
         }else if(event.getComponentId().equals("delete")){
             event.getChannel().sendMessage("Thanks for playing!").queue();
-            log(event.getMember(), event.getChannel(), event.getGuild().getTextChannelsByName("staff-log", true).get(0));
+            log(event.getMember(), event.getChannel(), "Delete RGG message", event.getGuild().getTextChannelsByName("staff-log", true).get(0));
             event.getMessage().delete().queue();
         }
     }
     
-    public void log(Member member, MessageChannel used, TextChannel channel){
+    public void log(Member member, MessageChannel used, String button, TextChannel channel){
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
         SimpleDateFormat stf = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         EmbedBuilder log = new EmbedBuilder();
         log.setTitle("Button Pressed!");
         log.setColor(Color.decode("#6c5ce7"));
-        log.setDescription(member.getAsMention() + " has pushed a button in channel: " + used.getName());
+        log.setDescription(member.getAsMention() + " has pushed the** " + button + "** in channel: " + used.getName());
         log.addField("Date", sdf.format(date), false);
         log.addField("Time", stf.format(date), false);
         channel.sendMessage(log.build()).queue();
