@@ -5,14 +5,21 @@
  */
 package commands;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.interaction.ButtonClickEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -88,9 +95,25 @@ public class randomGungame extends ListenerAdapter{
             String choice = gg.get(index);
             
             event.getChannel().sendMessage("I picked: " + choice).queue();
+            log(event.getMember(), event.getChannel(), event.getGuild().getTextChannelsByName("staff-log", true).get(0));
         }else if(event.getComponentId().equals("delete")){
             event.getChannel().sendMessage("Thanks for playing!").queue();
+            log(event.getMember(), event.getChannel(), event.getGuild().getTextChannelsByName("staff-log", true).get(0));
             event.getMessage().delete().queue();
         }
+    }
+    
+    public void log(Member member, MessageChannel used, TextChannel channel){
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat stf = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        EmbedBuilder log = new EmbedBuilder();
+        log.setTitle("Button Pressed!");
+        log.setColor(Color.decode("#6c5ce7"));
+        log.setDescription(member.getAsMention() + " has pushed a button in channel: " + used.getName());
+        log.addField("Date", sdf.format(date), false);
+        log.addField("Time", stf.format(date), false);
+        channel.sendMessage(log.build()).queue();
+        
     }
 }
